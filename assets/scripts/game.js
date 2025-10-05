@@ -75,9 +75,6 @@ window.onload = () => {
     document.addEventListener("click", () => {
         velocityY = -5
     })
-    document.addEventListener("touchstart", () => {
-        velocityY = -5
-    })
 }
 
 const update = () => {
