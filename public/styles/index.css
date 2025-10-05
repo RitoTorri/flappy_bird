@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(135deg, #6B8CBE 0%, #7CB97D 30%, #D4B15B 70%, #C46C6C 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fondo animado */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    animation: float 25s infinite linear;
+}
+
+.cloud:nth-child(1) {
+    width: 120px;
+    height: 40px;
+    top: 20%;
+    left: -150px;
+    animation-duration: 30s;
+}
+
+.cloud:nth-child(2) {
+    width: 180px;
+    height: 60px;
+    top: 40%;
+    left: -200px;
+    animation-duration: 35s;
+    animation-delay: 8s;
+}
+
+.cloud:nth-child(3) {
+    width: 100px;
+    height: 35px;
+    top: 70%;
+    left: -120px;
+    animation-duration: 28s;
+    animation-delay: 15s;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    left: 20px;
+}
+
+.cloud::after {
+    width: 70px;
+    height: 70px;
+    top: -30px;
+    right: 20px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 200px));
+    }
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Título */
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #D4B15B;
+    text-shadow:
+        2px 2px 0 #8B6B3D,
+        4px 4px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+    text-align: center;
+    animation: bounce 2.5s infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #2C3E50;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Botón único */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-start {
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #5D8A66, #4A6B57);
+    color: white;
+    width: 100%;
+}
+
+.btn-start::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s;
+}
+
+.btn-start:hover::before {
+    left: 100%;
+}
+
+.btn-start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(77, 120, 87, 0.4);
+    background: linear-gradient(135deg, #4A6B57, #3D5A48);
+}
+
+.btn-start:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(77, 120, 87, 0.4);
+}
+
+/* Pájaro decorativo */
+.bird {
+    position: absolute;
+    width: 45px;
+    height: 32px;
+    background: #D4B15B;
+    border-radius: 50% 50% 50% 0;
+    animation: fly 10s infinite ease-in-out;
+    z-index: 0;
+    filter: brightness(0.9);
+}
+
+.bird::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: -7px;
+    width: 12px;
+    height: 8px;
+    background: #C46C6C;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+}
+
+.bird::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 12px;
+    width: 18px;
+    height: 7px;
+    background: #C46C6C;
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.bird-wing {
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    width: 22px;
+    height: 12px;
+    background: #B89A50;
+    border-radius: 50%;
+    animation: flap 0.6s infinite alternate;
+}
+
+@keyframes fly {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(150px, -80px) rotate(4deg);
+    }
+
+    50% {
+        transform: translate(300px, 40px) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(450px, -100px) rotate(-4deg);
+    }
+}
+
+@keyframes flap {
+    0% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(0.6);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Instrucciones */
+.instructions {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    max-width: 400px;
+    text-align: center;
+}
+
+.instructions h3 {
+    color: #2C3E50;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.instructions p {
+    color: #34495E;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Efectos de partículas sutiles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: floatParticles 15s infinite linear;
+}
+
+.particle:nth-child(1) {
+    width: 8px;
+    height: 8px;
+    top: 20%;
+    left: 10%;
+    animation-duration: 20s;
+}
+
+.particle:nth-child(2) {
+    width: 6px;
+    height: 6px;
+    top: 60%;
+    left: 80%;
+    animation-duration: 25s;
+    animation-delay: 5s;
+}
+
+.particle:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    top: 80%;
+    left: 20%;
+    animation-duration: 18s;
+    animation-delay: 10s;
+}
+
+@keyframes floatParticles {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    50% {
+        transform: translateY(0) translateX(20px);
+    }
+
+    75% {
+        transform: translateY(20px) translateX(10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .btn-start {
+        padding: 16px 35px;
+        font-size: 1.2rem;
+    }
+
+    .instructions {
+        margin-top: 40px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .instructions h3 {
+        font-size: 1.1rem;
+    }
+
+    .instructions p {
+        font-size: 0.9rem;
+    }
+}

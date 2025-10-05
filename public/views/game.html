@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/game.css">
+    <link rel="icon" type="image/x-icon"
+        href="https://th.bing.com/th/id/R.083e5ae6a64c1986cd67730305c105a3?rik=M3O5cHEG4AWapA&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fen%2f0%2f0a%2fFlappy_Bird_icon.png&ehk=uxlzxmNphi34aEZpU7yI2Xb14qvEu42pAlxhL70r5Kg%3d&risl=&pid=ImgRaw&r=0">
+    <title>Flappy Bird - Game</title>
+</head>
+
+<body>
+    <canvas id="board"></canvas>
+
+    <!-- Dialog de Game Over -->
+    <div id="gameOverModal" class="game-modal">
+        <div class="modal-content">
+            <h2>Game Over</h2>
+
+            <div class="score-display">
+                Puntos: <span id="pointsDisplay">0</span>
+            </div>
+
+            <div class="message">
+                <span id="recommendationMessage"></span>
+            </div>
+
+            <div class="buttons">
+                <button id="playAgainBtn">Jugar de Nuevo</button>
+                <button id="goHomeBtn">Ir al Inicio</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/scripts/game.js"></script>
+</body>
+
+</html>
